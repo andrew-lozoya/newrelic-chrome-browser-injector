@@ -1,0 +1,41 @@
+body.show-title .chrome-options-title {
+    display: inline-block !important;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.title-image {
+    max-width: 50% !important;
+    height: auto;
+    -webkit-margin-after: -3em;
+    -webkit-margin-before: 10px;
+    -webkit-margin-start: 20px;
+}
+
+.chrome-bootstrap ul.menu li a {
+    color: #0ab0bf;
+}
+
+.chrome-bootstrap ul.menu li a:hover {
+    color: #464E5A;
+}
+
+.chrome-bootstrap a {
+    color: #0ab0bf;
+}
+
+.chrome-bootstrap a:hover {
+    color: #70ccd3;
+    text-decoration: underline;
+}
+
+.chrome-bootstrap h3 {
+    display: -webkit-inline-box;
+}
+
+.material-icons {
+    vertical-align: text-bottom;
+    padding-bottom: 2px;
+}

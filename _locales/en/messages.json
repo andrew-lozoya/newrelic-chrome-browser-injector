@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "New Relic Browser Agent Injector",
+    "description": "Experimental: New Relic browser agent injector"
+  },
+  "appDescription": {
+    "message": "Experimental: New Relic browser agent injector",
+    "description": "Experimental: New Relic browser agent injector"
+  }
+}
