@@ -12,17 +12,19 @@
     "background":
     {
         "scripts": [
-            "scripts/background.js"
-        ]
+            "scripts/background.js",
+            "scripts/csp.js"
+        ],
+        "persistent": true
     },
-    "content_security_policy": "script-src 'self' 'unsafe-eval' https://js-agent.newrelic.com; object-src 'self'",
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://js-agent.nr-assets.net; object-src 'self'",
     "permissions": [
         "tabs",
         "storage",
         "webRequest",
         "webRequestBlocking",
-        "http://*/*",
-        "https://*/*"
+        "browsingData",
+        "<all_urls>"
     ],
     "options_ui":
     {
@@ -32,15 +34,17 @@
     "content_scripts": [
     {
         "matches": [
-          "http://*/*",
-          "https://*/*"
+            "<all_urls>"
         ],
         "js": [
-            "scripts/contentScript.js"
+            "scripts/injector.js"
         ],
         "all_frames": true,
         "run_at": "document_start"
     }],
+    "web_accessible_resources": [
+        "scripts/aura-errors.js"
+    ],
     "browser_action":
     {
         "default_icon":

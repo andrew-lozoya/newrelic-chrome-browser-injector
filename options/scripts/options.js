@@ -3,8 +3,13 @@ chrome.options.opts.saveDefaults = false
 
 var version = localStorage.getItem('version');
 var template = localStorage.getItem('template');
+var refresh = localStorage.getItem('refresh');
 
-if (`${version}` == 'null') {
+
+if (`${version}` == 'null' && `${refresh}` == 'null') {
+    localStorage.setItem('refresh', 1);
+    location.reload();
+} else if (`${version}` == 'null') {
     version = 'current'
     chrome.options.opts.saveDefaults = true
 } else {
@@ -58,5 +63,5 @@ chrome.options.addTab('General', [
 ]);
 
 chrome.options.addTab('Advanced', [
-    { name: 'optional_code', type: 'text', desc: 'Experimenatl `optional_code` snippet', disabled: true, singleline: true }
+    { name: 'optional_code', type: 'text', desc: 'Experimental `optional_code` snippet', disabled: true, singleline: true }
 ]);

@@ -8,9 +8,9 @@ function instrument() {
     let nrLoader = document.createElement('script')
 
     if (general == "pro") {
-        nrLoader.setAttribute('src', 'https://js-agent.nr-assets.net/nr-loader-full-' + version +'.min.js');
+        nrLoader.setAttribute('src', 'https://js-agent.nr-assets.net/nr-loader-full-' + version + '.js');
     } else {
-        nrLoader.setAttribute('src', 'https://js-agent.nr-assets.net/nr-loader-spa-' + version +'.min.js');
+        nrLoader.setAttribute('src', 'https://js-agent.nr-assets.net/nr-loader-spa-' + version + '.js');
     }
 
     let nrLoaderConfig = document.createElement('script')
@@ -29,18 +29,19 @@ function instrument() {
             headElement.appendChild(nrLoader)
             headElement.appendChild(nrLoaderConfig)
 
-            // determine if optional code blocks should be loaded to load additional javascript
-            // example: customer-specific custom attribute captures
+
+            // EXPERIMENTAL: Determine if optional code blocks should be loaded to load additional javascript
+            // Usage Example: customer-specific custom attribute captures
             if (optional_code.indexOf("none") > -1) {
                 let optional = document.createElement('script')
                 optional.setAttribute('type', 'text/javascript')
-                // external script gist input
+                // TO DO: external script gist input
                 optional.src = scriptUrl
-                nrLoaderInit.innerHTML = optional_code
+                optional.innerHTML = optional_code
                 headElement.appendChild(optional)
             }
-
-            //console.log('NR agent injected')
+            // WARNING: May log once per frame
+            // console.log('NR agent injected')
             return
 
         } catch (e) {
@@ -62,7 +63,7 @@ chrome.runtime.sendMessage({ enabled: 1 }, (response) => {
             target_site = [loader_config.target_site]
             version = [loader_config.version]
 
-            var match = true
+            var match = false
 
             if (general !== "off") {
                 for (i = 0; i < target_site.length; i++) {
