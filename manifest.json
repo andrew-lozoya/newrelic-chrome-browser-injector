@@ -12,6 +12,7 @@
     "background":
     {
         "scripts": [
+            "scripts/jquery-css-deprecated-dimensions-effects-event-alias-offset-sizzle-wrap.min.js",
             "scripts/background.js",
             "scripts/csp.js"
         ],

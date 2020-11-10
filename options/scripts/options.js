@@ -1,5 +1,5 @@
 /* global chrome */
-chrome.options.opts.saveDefaults = false
+//chrome.options.opts.saveDefaults = false
 
 var version = localStorage.getItem('version');
 var template = localStorage.getItem('template');
@@ -9,7 +9,7 @@ var refresh = localStorage.getItem('refresh');
 if (`${version}` == 'null' && `${refresh}` == 'null') {
     localStorage.setItem('refresh', 1);
     location.reload();
-} else if (`${version}` == 'null') {
+} else if (`${version}` == 'null' && `${refresh}` == 1) {
     version = 'current'
     chrome.options.opts.saveDefaults = true
 } else {
@@ -47,12 +47,12 @@ chrome.options.addTab('General', [
         name: 'loader_config',
         type: 'object',
         options: [
-            { name: 'target_site', type: 'text', desc: 'target_site', singleline: true, default: 'https://example.com/*', disabled: false },
-            { name: 'accountID', type: 'text', desc: 'accountID', singleline: true, default: '', disabled: false },
-            { name: 'trustkey', type: 'text', desc: 'trustkey', singleline: true, default: '', disabled: false },
-            { name: 'agentID', type: 'text', desc: 'agentID', singleline: true, default: '', disabled: false },
-            { name: 'licenseKey', type: 'text', desc: 'licenseKey', singleline: true, default: '', disabled: false },
-            { name: 'applicationID', type: 'text', desc: 'applicationID', singleline: true, default: '', disabled: false },
+            { name: 'target_site', type: 'text', desc: 'target_site', singleline: true, default: 'https://personal-d9.lightning.force.com/*', disabled: false },
+            { name: 'accountID', type: 'text', desc: 'accountID', singleline: true, default: '2075557', disabled: false },
+            { name: 'trustkey', type: 'text', desc: 'trustkey', singleline: true, default: '2075557', disabled: false },
+            { name: 'agentID', type: 'text', desc: 'agentID', singleline: true, default: '1042750645', disabled: false },
+            { name: 'licenseKey', type: 'text', desc: 'licenseKey', singleline: true, default: 'b3855b2deb', disabled: false },
+            { name: 'applicationID', type: 'text', desc: 'applicationID', singleline: true, default: '1042750645', disabled: false },
             { type: 'html', html: '<i class="material-icons" style="font-size:14px;color:#0ab0bf;">bookmark_border</i> See current: ' + `${template}` + ' release notes' },
             { name: 'version', type: 'text', desc: 'version', singleline: true, default: `${version}`, disabled: false }
         ],

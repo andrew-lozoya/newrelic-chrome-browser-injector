@@ -16,7 +16,33 @@ chrome.runtime.onMessage.addListener(
 chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.local.get(null, (items) => {
         if (!Object.keys(items).length) {
-            chrome.runtime.openOptionsPage();
+
+            const RSS_URL = `https://docs.newrelic.com/docs/release-notes/new-relic-browser-release-notes/browser-agent-release-notes/feed`;
+
+            $.ajax(RSS_URL, {
+                accepts: {
+                    xml: "application/rss+xml"
+                },
+
+                dataType: "xml",
+
+                success: function(data) {
+                    $(data)
+                        .find("item").first()
+                        .each(function() {
+                            const el = $(this);
+
+                            const template = `<a href="${el.find("link").text()}" target="_blank" rel="noopener">${el.find("title").text()}</a>`;
+                            localStorage.setItem('template', template);
+
+                            var version = `${el.find("title").text()}`
+                            version = version.replace(/[^0-9]/g, '');
+
+                            localStorage.setItem('version', version);
+                        });
+                    chrome.runtime.openOptionsPage();
+                }
+            });
         }
     })
 })
