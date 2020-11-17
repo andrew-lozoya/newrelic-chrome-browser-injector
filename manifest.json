@@ -24,7 +24,6 @@
         "storage",
         "webRequest",
         "webRequestBlocking",
-        "browsingData",
         "<all_urls>"
     ],
     "options_ui":
