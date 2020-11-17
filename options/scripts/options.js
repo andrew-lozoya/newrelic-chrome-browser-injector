@@ -34,6 +34,10 @@ chrome.options.addTab('General', [
         default: 'pro+spa'
     },
 
+    { type: 'html', html: '</br>', hidden: false },
+    { name: 'csp', desc: 'Enable Content Security Policy (CSP) Bypass', default: true, disabled: false, hidden: false },
+    { type: 'html', html: '<div><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy (CSP)</a> is an added layer of security on some websites that can help to detect and mitigate certain types of data injection. Thus preventing client side injection of the New Relic Browser Agent.</br>Refused to load the script https://js-agent.newrelic.com/nr-spa-XXXX.min.js</div>', hidden: false },
+
     { type: 'html', html: '</br>' },
     { name: 'dt', desc: 'Enable Distributed Tracing', default: true, disabled: false },
     { type: 'html', html: '<div><div>Monitor and analyze your Browser requests from end to end as they travel across distributed systems. </div><div><span><strong>Requires APM Pro agent and Browser Pro + SPA agent and account. </strong><!-- react-text: 77 -->To ensure that APM transaction data is collected as expected, please refer to the minimum required APM language agent versions under the "Requirements and compatibility" section of <!-- /react-text --></span><a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/browser-pro-features/browser-data-distributed-tracing">our config docs</a><span class="">.</span></div></div>' },

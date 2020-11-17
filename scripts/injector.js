@@ -8,14 +8,10 @@ function instrument() {
     let nrLoader = document.createElement('script')
 
     if (general == "pro") {
-        nrLoader.setAttribute('src', 'https://js-agent.nr-assets.net/nr-loader-full-' + version + '.min.js');
+        nrLoader.setAttribute('src', 'https://js-agent.nr-assets.net/nr-loader-full-' + version + '.js');
     } else {
-        nrLoader.setAttribute('src', 'https://js-agent.nr-assets.net/nr-loader-spa-' + version + '.min.js');
+        nrLoader.setAttribute('src', 'https://js-agent.nr-assets.net/nr-loader-spa-' + version + '.js');
     }
-
-    let auraErrors = document.createElement('script')
-    auraErrors.setAttribute('src', 'text/javascript')
-    auraErrors.innerHTML = `window.newrelic.addEventListener("xhrSend",function(e,r){var t=e[0];if(this.query.indexOf("reportFailedAction")>-1)for(var a=t.split("&"),n=0;n<a.length;n++){var o=a[n].split("="),i=o[0],s=o[1];if("message"===i)try{var c=decodeURIComponent(s);JSON.parse(c).actions.forEach(function(e){if("aura://ComponentController/ACTION$reportFailedAction"===e.descriptor){var r=e.params.clientError,t=e.params.clientStack,a=e.params.failedId,n=new Error(r);n.stack=t,newrelic.noticeError(n,{failedId:a})}})}catch(e){console.log(e)}}0===this.params.pathname.indexOf("/aura")&&r.addEventListener("load",function(){try{if(r.getResponseHeader("content-type").indexOf("json")>-1){var e=r.responseText;JSON.parse(e).actions.forEach(function(e){"ERROR"===e.state&&e.error&&e.error.length&&e.error.forEach(function(e){if(e.event&&e.event.attributes&&e.event.attributes.values&&e.event.attributes.values.attributes){var r=e.event.attributes.values.attributes.messageText,t=new Error(r);newrelic.noticeError(t)}})})}}catch(e){console.log(e)}})});`
 
     let nrLoaderConfig = document.createElement('script')
     nrLoaderConfig.setAttribute('type', 'text/javascript')
@@ -32,7 +28,6 @@ function instrument() {
             }
             headElement.appendChild(nrLoader)
             headElement.appendChild(nrLoaderConfig)
-            headElement.appendChild(auraErrors)
 
             // EXPERIMENTAL: Determine if optional code blocks should be loaded to load additional javascript
             // Usage Example: customer-specific custom attribute captures

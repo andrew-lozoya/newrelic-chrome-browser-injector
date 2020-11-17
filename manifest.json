@@ -43,9 +43,6 @@
         "all_frames": true,
         "run_at": "document_start"
     }],
-    "web_accessible_resources": [
-        "scripts/aura-errors.js"
-    ],
     "browser_action":
     {
         "default_icon":
