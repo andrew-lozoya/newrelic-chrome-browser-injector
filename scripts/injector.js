@@ -1,5 +1,3 @@
-var optional_code = []
-
 function instrument() {
     let nrLoaderInit = document.createElement('script')
     nrLoaderInit.setAttribute('type', 'text/javascript')
@@ -31,13 +29,14 @@ function instrument() {
 
             // EXPERIMENTAL: Determine if optional code blocks should be loaded to load additional javascript
             // Usage Example: customer-specific custom attribute captures
-            if (optional_code.indexOf("none") > -1) {
-                let optional = document.createElement('script')
-                optional.setAttribute('type', 'text/javascript')
+            if (optional_code !== 'undefined') {
+                let snippet = document.createElement('script')
+                snippet.setAttribute('type', 'text/javascript')
+                snippet.setAttribute('defer', 'defer')
                 // TO DO: external script gist input
-                optional.src = scriptUrl
-                optional.innerHTML = optional_code
-                headElement.appendChild(optional)
+                // snippet.src = scriptUrl
+                snippet.innerHTML = `${optional_code}`
+                headElement.appendChild(snippet)
             }
             // WARNING: May log once per frame
             // console.log('NR agent injected')
@@ -54,13 +53,14 @@ function instrument() {
 
 chrome.runtime.sendMessage({ enabled: 1 }, (response) => {
     if (response.enabled) {
-        chrome.storage.sync.get(['general', 'general_dt', 'general_privacy', 'general_loader_config'], function(result) {
+        chrome.storage.sync.get(['general', 'general_dt', 'general_privacy', 'general_loader_config', 'advanced_optional_code'], function(result) {
             general = result.general
             dt = result.general_dt
             privacy = result.general_privacy
             loader_config = result.general_loader_config
             target_site = [loader_config.target_site]
             version = [loader_config.version]
+            optional_code = result.advanced_optional_code
 
             var match = false
 
