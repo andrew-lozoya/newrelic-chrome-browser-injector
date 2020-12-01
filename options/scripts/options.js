@@ -35,7 +35,7 @@ chrome.options.addTab('General', [
     },
 
     { type: 'html', html: '</br>', hidden: false },
-    { name: 'csp', desc: 'Enable Content Security Policy (CSP) Bypass', default: true, disabled: false, hidden: false },
+    { name: 'csp', desc: 'Enable Content Security Policy (CSP) Bypass', default: true, disabled: true, hidden: false },
     { type: 'html', html: `<div><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy (CSP)</a> is an added layer of security on some websites that can help to detect and mitigate certain types of data injection. Thus preventing client side injection of the New Relic Browser Agent.</br>If CSP is not bypassed you may see the following console log: <pre><code style="overflow-x:auto;padding:0.5em;color:#383a42;background:#fafafa"><i><span style="color:#FF0000;">"Refused to load the script</span> 'https://js-agent.newrelic.com/nr-spa-${version}.min.js' <span style="color:#FF0000;">because it violoates the following Content Security Policy directive"</i></span></code></pre></div>`, hidden: false },
 
     { type: 'html', html: '</br>' },
@@ -51,12 +51,12 @@ chrome.options.addTab('General', [
         name: 'loader_config',
         type: 'object',
         options: [
-            { name: 'target_site', type: 'text', desc: 'target_site', singleline: true, default: 'https://example.com/*', disabled: false },
-            { name: 'accountID', type: 'text', desc: 'accountID', singleline: true, default: '', disabled: false },
-            { name: 'trustkey', type: 'text', desc: 'trustkey', singleline: true, default: '', disabled: false },
-            { name: 'agentID', type: 'text', desc: 'agentID', singleline: true, default: '', disabled: false },
-            { name: 'licenseKey', type: 'text', desc: 'licenseKey', singleline: true, default: '', disabled: false },
-            { name: 'applicationID', type: 'text', desc: 'applicationID', singleline: true, default: '', disabled: false },
+            { name: 'target_site', type: 'text', desc: 'target_site', singleline: true, default: 'https://newrelic-neworg.lightning.force.com/*', disabled: false },
+            { name: 'accountID', type: 'text', desc: 'accountID', singleline: true, default: '2075557', disabled: false },
+            { name: 'trustkey', type: 'text', desc: 'trustkey', singleline: true, default: '2075557', disabled: false },
+            { name: 'agentID', type: 'text', desc: 'agentID', singleline: true, default: '1042750645', disabled: false },
+            { name: 'licenseKey', type: 'text', desc: 'licenseKey', singleline: true, default: 'b3855b2deb', disabled: false },
+            { name: 'applicationID', type: 'text', desc: 'applicationID', singleline: true, default: '1042750645', disabled: false },
             { type: 'html', html: '<i class="material-icons" style="font-size:14px;color:#0ab0bf;">bookmark_border</i> See current: ' + `${template}` + ' release notes' },
             { name: 'version', type: 'text', desc: 'version', singleline: true, default: `${version}`, disabled: false }
         ],
@@ -86,7 +86,7 @@ chrome.options.addTab('Advanced', [
         newrelic.setCustomAttribute(<span style="color:#50a14f">"userEmail"</span>, $A.get(<span style="color:#50a14f">"$SObjectType.CurrentUser.Email"</span>));
         newrelic.setCustomAttribute(<span style="color:#50a14f">"userId"</span>, $A.get(<span style="color:#50a14f">"$SObjectType.CurrentUser.Id"</span>));
     } <span style="color:#a626a4">else</span> {
-        timeout = setTimeout(waitForAura, <span style="color:#986801">3000</span>);
+        timeout = setTimeout(waitForAura, <span style="color:#986801">1000</span>);
     }
 }
 waitForAura();</code></pre></td>
