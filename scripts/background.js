@@ -17,7 +17,7 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.storage.local.get(null, (items) => {
         if (!Object.keys(items).length) {
 
-            const RSS_URL = `https://docs.newrelic.com/docs/release-notes/new-relic-browser-release-notes/browser-agent-release-notes/feed`;
+            const RSS_URL = `https://docs.newrelic.com/docs/release-notes/new-relic-browser-release-notes/browser-agent-release-notes/feed.xml`;
 
             $.ajax(RSS_URL, {
                 accepts: {
