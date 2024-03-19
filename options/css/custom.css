@@ -14,25 +14,48 @@ img {
     -webkit-margin-start: 20px;
 }
 
+.chrome-bootstrap {
+    color: #878A8D;
+}
+
+.chrome-bootstrap .frame {
+    background: #1D252C;
+}
+
+.chrome-bootstrap .frame .navigation {
+    background: #1D252C;
+}
+
 .chrome-bootstrap ul.menu li a {
-    color: #0ab0bf;
+    color: #878A8D;
 }
 
 .chrome-bootstrap ul.menu li a:hover {
-    color: #464E5A;
+    color: #fff;
 }
 
 .chrome-bootstrap a {
-    color: #0ab0bf;
+    color: #878A8D;
 }
 
 .chrome-bootstrap a:hover {
-    color: #70ccd3;
+    color: #fff;
     text-decoration: underline;
 }
 
 .chrome-bootstrap h3 {
     display: -webkit-inline-box;
+}
+
+.chrome-bootstrap .save-container {
+    background: #1D252C;
+}
+
+.chrome-bootstrap .save-container {
+    background: #1D252C;
+}
+.chrome-bootstrap header h1 {
+    background: #1D252C;
 }
 
 .material-icons {

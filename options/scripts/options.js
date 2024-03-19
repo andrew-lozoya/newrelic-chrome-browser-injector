@@ -18,52 +18,157 @@ if (`${version}` == 'null' && `${refresh}` == 'null') {
 
 chrome.options.opts.license = `<p>New Relic Browser Injector for Chromium is licensed under the <a href="http://apache.org/licenses/LICENSE-2.0.txt" rel="nofollow">Apache 2.0</a> License.</p>`;
 
-chrome.options.addTab('General', [
-    { type: 'html', html: '<i class="material-icons" style="font-size:14px">build</i> <h3>Experimental Options</h3>' },
-    { type: 'html', html: '<div>This will deploy the agent via one of the option you select by dom injection.</div>' },
-    {
-        type: 'radio',
-        desc: '',
-        options: [
-            { type: 'radio', value: 'off', desc: 'Off - Disables Browser Application Monitoring instrumentation.' },
-            { type: 'radio', value: 'lite', desc: 'Lite - Basic page load timing instrumentation.' },
-            { type: 'radio', value: 'pro', desc: 'Pro - Instrumentation supporting all Pro features.' },
-            { type: 'radio', value: 'pro+spa', desc: 'Pro + SPA - Instrumentation supporting all Pro and SPA features. To learn more about SPA, visit our documentation.' }
-        ],
+chrome.options.addTab("General", [
+  {
+    type: "html",
+    html: '<i class="material-icons" style="font-size:14px">build</i> <h3>Experimental Options</h3>',
+  },
+  {
+    type: "html",
+    html: "<div>This will deploy the agent via one of the option you select by dom injection.</div>",
+  },
+  {
+    type: "radio",
+    desc: "",
+    options: [
+      {
+        type: "radio",
+        value: "off",
+        desc: "Off - Disables Browser Application Monitoring instrumentation.",
+      },
+      {
+        type: "radio",
+        value: "lite",
+        desc: "Lite - Basic page load timing instrumentation.",
+      },
+      {
+        type: "radio",
+        value: "pro",
+        desc: "Pro - Instrumentation supporting all Pro features.",
+      },
+      {
+        type: "radio",
+        value: "pro+spa",
+        desc: "Pro + SPA - Instrumentation supporting all Pro and SPA features. To learn more about SPA, visit our documentation.",
+      },
+    ],
+    disabled: false,
+    default: "pro+spa",
+  },
+
+  { type: "html", html: "</br>", hidden: false },
+  {
+    name: "csp",
+    desc: "Enable Content Security Policy (CSP) Bypass",
+    default: true,
+    disabled: true,
+    hidden: false,
+  },
+  {
+    type: "html",
+    html: `<div><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy (CSP)</a> is an added layer of security on some websites that can help to detect and mitigate certain types of data injection. Thus preventing client side injection of the New Relic Browser Agent.</br>If CSP is not bypassed you may see the following console log: </br><div style="padding: 8px;background:#141A1F;border-radius: 8px;border:1px solid #878A8D; width: fit-content; margin-top: 10px;"><pre><code style="overflow-x:auto;padding:0.5em;color:#878A8D;background:#1D252C;border:2px solid #1CE783;border-radius: 4px;"><i><span style="color:#FF40B4;">"Refused to load the script</span> 'https://js-agent.newrelic.com/nr-spa-${version}.min.js' <span style="color:#FF40B4;">because it violoates the following Content Security Policy directive"</i></span></code></pre></div></div>`,
+    hidden: false,
+  },
+
+  { type: "html", html: "</br>" },
+  {
+    name: "dt",
+    desc: "Enable Distributed Tracing",
+    default: true,
+    disabled: false,
+  },
+  {
+    type: "html",
+    html: '<div><div>Monitor and analyze your Browser requests from end to end as they travel across distributed systems. </div><div><span><strong>Requires APM Pro agent and Browser Pro + SPA agent and account. </strong><!-- react-text: 77 -->To ensure that APM transaction data is collected as expected, please refer to the minimum required APM language agent versions under the "Requirements and compatibility" section of </span><a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/browser-pro-features/browser-data-distributed-tracing">our config docs</a><span class="">.</span></div></div>',
+  },
+
+  { type: "html", html: "</br>" },
+  {
+    name: "privacy",
+    desc: "Enable Privacy Cookies",
+    default: true,
+    disabled: false,
+  },
+  {
+    type: "html",
+    html: '<div>By default, New Relic doesn&#39;t retain any <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#gdpr">personal data</a> collected by the Browser agent. We use cookies to store a <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#jsessionid">session identifier</a> and to provide <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#nreum">navigation timing data</a> in some older browsers.</br></br><div><div style="display: inline;"><svg fill="#000000" width="25px" height="25px" viewBox="0 0 24 24" id="warning" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><circle id="primary" cx="12" cy="12" r="9" style="fill: none; stroke: rgb(52, 59, 65, .5); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"></circle><line id="secondary" x1="12" y1="7" x2="12" y2="13" style="fill: none; stroke: rgb(28, 231, 131); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><line id="secondary-upstroke" x1="12.05" y1="17" x2="11.95" y2="17" style="fill: none; stroke: rgb(28, 231, 131); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line></svg></div> <div><strong>If cookie collection is off, data relying on these cookies will not be available.</strong> For more information on GDPR requirements, see the <a target="_blank" href="https://ico.org.uk/for-organisations/guide-to-data-protection/">ICO Guide to Data Protection</a>.</div></div></div>',
+  },
+
+  {
+    type: "html",
+    html: '<i class="material-icons" style="font-size:14px">settings</i> <h3>License</h3>',
+  },
+  {
+    name: "loader_config",
+    type: "object",
+    options: [
+      {
+        name: "target_site",
+        type: "text",
+        desc: "target_site",
+        singleline: true,
+        default: "https://example.com/*",
         disabled: false,
-        default: 'pro+spa'
-    },
-
-    { type: 'html', html: '</br>', hidden: false },
-    { name: 'csp', desc: 'Enable Content Security Policy (CSP) Bypass', default: true, disabled: true, hidden: false },
-    { type: 'html', html: `<div><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy (CSP)</a> is an added layer of security on some websites that can help to detect and mitigate certain types of data injection. Thus preventing client side injection of the New Relic Browser Agent.</br>If CSP is not bypassed you may see the following console log: <pre><code style="overflow-x:auto;padding:0.5em;color:#383a42;background:#fafafa"><i><span style="color:#FF0000;">"Refused to load the script</span> 'https://js-agent.newrelic.com/nr-spa-${version}.min.js' <span style="color:#FF0000;">because it violoates the following Content Security Policy directive"</i></span></code></pre></div>`, hidden: false },
-
-    { type: 'html', html: '</br>' },
-    { name: 'dt', desc: 'Enable Distributed Tracing', default: true, disabled: false },
-    { type: 'html', html: '<div><div>Monitor and analyze your Browser requests from end to end as they travel across distributed systems. </div><div><span><strong>Requires APM Pro agent and Browser Pro + SPA agent and account. </strong><!-- react-text: 77 -->To ensure that APM transaction data is collected as expected, please refer to the minimum required APM language agent versions under the "Requirements and compatibility" section of </span><a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/browser-pro-features/browser-data-distributed-tracing">our config docs</a><span class="">.</span></div></div>' },
-
-    { type: 'html', html: '</br>' },
-    { name: 'privacy', desc: 'Enable Privacy Cookies', default: true, disabled: false },
-    { type: 'html', html: '<div>By default, New Relic doesn&#39;t retain any <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#gdpr">personal data</a> collected by the Browser agent. We use cookies to store a <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#jsessionid">session identifier</a> and to provide <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#nreum">navigation timing data</a> in some older browsers.</br></br><div><i class="material-icons" style="font-size:12px;color:#ffc107">warning</i> <strong>If cookie collection is off, data relying on these cookies will not be available.</strong> For more information on GDPR requirements, see the <a target="_blank" href="https://ico.org.uk/for-organisations/guide-to-data-protection/">ICO Guide to Data Protection</a>.</div></div>' },
-
-    { type: 'html', html: '<i class="material-icons" style="font-size:14px">settings</i> <h3>License</h3>' },
-    {
-        name: 'loader_config',
-        type: 'object',
-        options: [
-            { name: 'target_site', type: 'text', desc: 'target_site', singleline: true, default: 'https://example.com/*', disabled: false },
-            { name: 'accountID', type: 'text', desc: 'accountID', singleline: true, default: '', disabled: false },
-            { name: 'trustkey', type: 'text', desc: 'trustkey', singleline: true, default: '', disabled: false },
-            { name: 'agentID', type: 'text', desc: 'agentID', singleline: true, default: '', disabled: false },
-            { name: 'licenseKey', type: 'text', desc: 'licenseKey', singleline: true, default: '', disabled: false },
-            { name: 'applicationID', type: 'text', desc: 'applicationID', singleline: true, default: '', disabled: false },
-            { type: 'html', html: '<i class="material-icons" style="font-size:14px;color:#0ab0bf;">bookmark_border</i> See current: ' + `${template}` + ' release notes' },
-            { name: 'version', type: 'text', desc: 'version', singleline: true, default: `${version}`, disabled: false }
-        ],
-        desc: 'New Relic `loader_config` (this is an object type)',
-        hidden: false
-    },
-
+      },
+      {
+        name: "accountID",
+        type: "text",
+        desc: "accountID",
+        singleline: true,
+        default: "",
+        disabled: false,
+      },
+      {
+        name: "trustkey",
+        type: "text",
+        desc: "trustkey",
+        singleline: true,
+        default: "",
+        disabled: false,
+      },
+      {
+        name: "agentID",
+        type: "text",
+        desc: "agentID",
+        singleline: true,
+        default: "",
+        disabled: false,
+      },
+      {
+        name: "licenseKey",
+        type: "text",
+        desc: "licenseKey",
+        singleline: true,
+        default: "",
+        disabled: false,
+      },
+      {
+        name: "applicationID",
+        type: "text",
+        desc: "applicationID",
+        singleline: true,
+        default: "",
+        disabled: false,
+      },
+      {
+        type: "html",
+        html:
+          '<i class="material-icons" style="font-size:14px;color:#0ab0bf;">bookmark_border</i> See current: ' +
+          `${template}` +
+          " release notes",
+      },
+      {
+        name: "version",
+        type: "text",
+        desc: "version",
+        singleline: true,
+        default: `${version}`,
+        disabled: false,
+      },
+    ],
+    desc: "New Relic `loader_config` (this is an object type)",
+    hidden: false,
+  },
 ]);
 
 chrome.options.addTab('Advanced', [
