@@ -9,23 +9,25 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility; }
+  text-rendering: optimizeLegibility;
+  background-color: #1D252C;
+ }
 
 body {
   margin: 0;
   padding: 0;
   font-family: "Open Sans",Helvetica,sans-serif;
-  color: #454646;
+  color: #878A8D;
   counter-reset: section; }
 
 a {
   text-decoration: none;
-  color: #0ab0bf;
+  color: #878A8D;
   transition: color 100ms ease-out;
   text-decoration: underline; }
 
 a:hover {
-  color: #70ccd3;
+  color: #fff;
   text-decoration: underline; }
 
 img {
@@ -83,7 +85,7 @@ p {
 .container {
   padding: 16px;
   margin: 12px;
-  background-color: #fff;
+  background-color: #1D252C;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -124,8 +126,8 @@ p {
 .btn {
   font-family: "Open Sans",Helvetica,sans-serif;
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -148,19 +150,23 @@ p {
   overflow: hidden; }
 
 .btn--primary {
-  background-color: #0AB0BF; }
+  background-color: #1CE783;
+  border-radius: 4px;
+  transition: border .25s linear;
+ }
 
 .btn--primary,
 .btn--primary:hover,
 .btn--primary:visited {
-  color: #fff; }
+  color: #1D252C; }
 
 .btn--primary:hover {
-  background-color: #70ccd3;
+  background-color: #64dda0;
+
  }
 
 .btn--primary:active {
-  background-color: #008c99; }
+  background-color: #1CE783; }
 
 
 .btn--primary[disabled] {

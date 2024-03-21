@@ -21,7 +21,7 @@ chrome.options.opts.license = `<p>New Relic Browser Injector for Chromium is lic
 chrome.options.addTab("General", [
   {
     type: "html",
-    html: '<i class="material-icons" style="font-size:14px">build</i> <h3>Experimental Options</h3>',
+    html: '<i class="material-icons" style="font-size:15px">build</i> <h3>Experimental Options</h3>',
   },
   {
     type: "html",
@@ -66,7 +66,7 @@ chrome.options.addTab("General", [
   },
   {
     type: "html",
-    html: `<div><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy (CSP)</a> is an added layer of security on some websites that can help to detect and mitigate certain types of data injection. Thus preventing client side injection of the New Relic Browser Agent.</br>If CSP is not bypassed you may see the following console log: </br><div style="padding: 8px;background:#141A1F;border-radius: 8px;border:1px solid #878A8D; width: fit-content; margin-top: 10px;"><pre><code style="overflow-x:auto;padding:0.5em;color:#878A8D;background:#1D252C;border:2px solid #1CE783;border-radius: 4px;"><i><span style="color:#FF40B4;">"Refused to load the script</span> 'https://js-agent.newrelic.com/nr-spa-${version}.min.js' <span style="color:#FF40B4;">because it violoates the following Content Security Policy directive"</i></span></code></pre></div></div>`,
+    html: `<div><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy (CSP)</a> is an added layer of security on some websites that can help to detect and mitigate certain types of data injection. Thus preventing client side injection of the New Relic Browser Agent.</br>If CSP is not bypassed you may see the following console log: </br><div style="box-shadow: inset 0 0 15px rgba(135, 135, 135, .1), 0 0 18px 3px rgba(0, 0, 0, .3); padding: 6px;background:#141A1F;border-radius: 8px;border:1px solid #878A8D; width: fit-content; margin-top: 10px;"><pre><code style="overflow-x:auto;padding:0.5em;color:#878A8D;background:#1D252C;border:2px solid #1CE783;border-radius: 4px;"><i><span style="color:#FF40B4;">"Refused to load the script</span> 'https://js-agent.newrelic.com/nr-spa-${version}.min.js' <span style="color:#FF40B4;">because it violoates the following Content Security Policy directive"</i></span></code></pre></div></div>`,
     hidden: false,
   },
 
@@ -91,12 +91,12 @@ chrome.options.addTab("General", [
   },
   {
     type: "html",
-    html: '<div>By default, New Relic doesn&#39;t retain any <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#gdpr">personal data</a> collected by the Browser agent. We use cookies to store a <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#jsessionid">session identifier</a> and to provide <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#nreum">navigation timing data</a> in some older browsers.</br></br><div><div style="display: inline;"><svg fill="#000000" width="25px" height="25px" viewBox="0 0 24 24" id="warning" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><circle id="primary" cx="12" cy="12" r="9" style="fill: none; stroke: rgb(52, 59, 65, .5); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"></circle><line id="secondary" x1="12" y1="7" x2="12" y2="13" style="fill: none; stroke: rgb(28, 231, 131); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><line id="secondary-upstroke" x1="12.05" y1="17" x2="11.95" y2="17" style="fill: none; stroke: rgb(28, 231, 131); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line></svg></div> <div><strong>If cookie collection is off, data relying on these cookies will not be available.</strong> For more information on GDPR requirements, see the <a target="_blank" href="https://ico.org.uk/for-organisations/guide-to-data-protection/">ICO Guide to Data Protection</a>.</div></div></div>',
+    html: '<div>By default, New Relic doesn&#39;t retain any <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#gdpr">personal data</a> collected by the Browser agent. We use cookies to store a <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#jsessionid">session identifier</a> and to provide <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#nreum">navigation timing data</a> in some older browsers.</br></br><div><i class="material-icons" style="font-size:15px;color:#FFD23D;">warning</i> <strong>If cookie collection is off, data relying on these cookies will not be available.</strong> For more information on GDPR requirements, see the <a target="_blank" href="https://ico.org.uk/for-organisations/guide-to-data-protection/">ICO Guide to Data Protection</a>.</div></div>',
   },
 
   {
     type: "html",
-    html: '<i class="material-icons" style="font-size:14px">settings</i> <h3>License</h3>',
+    html: '<i class="material-icons" style="font-size:15px">key</i><h3>License Input</h3>',
   },
   {
     name: "loader_config",
@@ -153,7 +153,7 @@ chrome.options.addTab("General", [
       {
         type: "html",
         html:
-          '<i class="material-icons" style="font-size:14px;color:#0ab0bf;">bookmark_border</i> See current: ' +
+          '<i class="material-icons" style="font-size:15px;color:#878A8D;">bookmark</i> See current: ' +
           `${template}` +
           " release notes",
       },
@@ -171,33 +171,45 @@ chrome.options.addTab("General", [
   },
 ]);
 
-chrome.options.addTab('Advanced', [
-    { name: 'optional_code', type: 'text', desc: 'Experimental `optional_code` snippet', disabled: false, singleline: true },
-    { type: 'html', html: `<table>
+chrome.options.addTab("Advanced", [
+  {
+    name: "optional_code",
+    type: "text",
+    desc: "Experimental `optional_code` snippet",
+    disabled: false,
+    singleline: true,
+  },
+  {
+    type: "html",
+    html: `<table>
     <tbody>
         <tr>
-            <td><i class="material-icons" style="font-size:12px;color:#ffc107">warning</i><strong> Keep in mind:</strong> Loading script files dynamically can sometimes be tricky, below is an example snippet of the <i style="color:#c18401;">setTimeout(function, milliseconds)</i> method, which waits for the <a target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_sobject.htm#apex_methods_system_sobject">$SObject Class</a> in Salesforce Lightning to become globally available in the <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Window">Window</a> object, after waiting for a specified number of milliseconds.</td>
+            <td><i class="material-icons" style="font-size:15px;color:#ffc107">warning</i><strong> Keep in mind:</strong> Loading script files dynamically can sometimes be tricky, below is an example snippet of the <i style="color:#c18401;">setTimeout(function, milliseconds)</i> method, which waits for the <a target="_blank" href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_methods_system_sobject.htm#apex_methods_system_sobject">$SObject Class</a> in Salesforce Lightning to become globally available in the <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/API/Window">Window</a> object, after waiting for a specified number of milliseconds.</td>
         </tr>
     </tbody>
-</table>`, hidden: false },
-    { type: 'html', html: `<table>
+</table>`,
+    hidden: false,
+  },
+  {
+    type: "html",
+    html: `<table>
     <tbody>
         <tr>
-            <td><pre><code style="display:block;overflow-x:auto;padding:0.5em;color:#383a42;background:#fafafa"><span style="color:#a626a4">var</span> timeout;
+            <td><pre><code style="display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34"><span style="color:#c678dd">var</span> timeout;
 
-<span class="hljs-function"><span style="color:#a626a4">function</span> <span style="color:#4078f2">waitForAura</span>(<span class="hljs-params"></span>) </span>{
-    <span style="color:#a626a4">if</span> (<span style="color:#c18401">window</span>[<span style="color:#50a14f">"$A"</span>]) {
+<span class="hljs-function"><span style="color:#c678dd">function</span> <span style="color:#61aeee">waitForAura</span>(<span class="hljs-params"></span>) </span>{
+    <span style="color:#c678dd">if</span> (<span style="color:#e6c07b">window</span>[<span style="color:#98c379">"$A"</span>]) {
         clearTimeout(timeout);
-        newrelic.setCustomAttribute(<span style="color:#50a14f">"userEmail"</span>, $A.get(<span style="color:#50a14f">"$SObjectType.CurrentUser.Email"</span>));
-        newrelic.setCustomAttribute(<span style="color:#50a14f">"userId"</span>, $A.get(<span style="color:#50a14f">"$SObjectType.CurrentUser.Id"</span>));
-    } <span style="color:#a626a4">else</span> {
-        timeout = setTimeout(waitForAura, <span style="color:#986801">1000</span>);
+        newrelic.setCustomAttribute(<span style="color:#98c379">"userEmail"</span>, $A.get(<span style="color:#98c379">"$SObjectType.CurrentUser.Email"</span>));
+        newrelic.setCustomAttribute(<span style="color:#98c379">"userId"</span>, $A.get(<span style="color:#98c379">"$SObjectType.CurrentUser.Id"</span>));
+    } <span style="color:#c678dd">else</span> {
+        timeout = setTimeout(waitForAura, <span style="color:#d19a66">1000</span>);
     }
 }
 waitForAura();</code></pre></td>
         </tr>
     </tbody>
-</table>`, hidden: false }
-
-
+</table>`,
+    hidden: false,
+  },
 ]);

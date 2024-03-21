@@ -89,13 +89,13 @@ const urlmatch = function(url1, url2) {
 // Update icon
 const updateIcon = function(IconStatus) {
     const iconName = IconStatus ? 'on' : 'off'
-    chrome.browserAction.setIcon({ path: 'icons/logo-text-128-' + iconName + '.png' })
+    chrome.browserAction.setIcon({ path: 'icons/logo-text-' + iconName + '.png' })
 }
 
 // Update icon
 const updateCSPIcon = function(IconStatus) {
     const iconName = IconStatus ? 'on' : 'off'
-    chrome.browserAction.setIcon({ path: 'icons/logo-csp-128-' + iconName + '.png' })
+    chrome.browserAction.setIcon({ path: 'icons/logo-csp-' + iconName + '.png' })
 }
 
 const cspValues = function(csp) {
