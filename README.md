@@ -6,7 +6,7 @@ This project demonstrates the usage of chrome extension to inject the New Relic 
 
 ## Screenshot
 
-![Screenshot of Extension Options](https://github.com/andrew-lozoya/chrome-options/blob/master/images/newrelic_options_example.png)
+![Screenshot of Extension Options](https://github.com/andrew-lozoya/chrome-options/blob/master/images/onenewrelic_options_example.png)
 
 ## Development
 
