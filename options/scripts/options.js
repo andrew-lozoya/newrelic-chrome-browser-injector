@@ -93,7 +93,43 @@ chrome.options.addTab("General", [
     type: "html",
     html: '<div>By default, New Relic doesn&#39;t retain any <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#gdpr">personal data</a> collected by the Browser agent. We use cookies to store a <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#jsessionid">session identifier</a> and to provide <a target="_blank" href="https://docs.newrelic.com/docs/browser/new-relic-browser/page-load-timing-resources/new-relic-cookies-used-browser#nreum">navigation timing data</a> in some older browsers.</br></br><div><i class="material-icons" style="font-size:15px;color:#FFD23D;">warning</i> <strong>If cookie collection is off, data relying on these cookies will not be available.</strong> For more information on GDPR requirements, see the <a target="_blank" href="https://ico.org.uk/for-organisations/guide-to-data-protection/">ICO Guide to Data Protection</a>.</div></div>',
   },
-
+  { type: "html", html: "</br>" },
+  {
+    name: "session_replay",
+    desc: "Enable Session Replay",
+    default: false,
+    disabled: false,
+    options: [
+      {
+        name: "sampling_rate",
+        type: "text",
+        desc: "Sampling Rate",
+        singleline: true,
+        default: "100.0",
+        disabled: false,
+      },
+      {
+        name: "error_sampling_rate",
+        type: "text",
+        desc: "Error Sampling Rate",
+        singleline: true,
+        default: "100.0",
+        disabled: false,
+      },
+      {
+        name: "mask_all_inputs",
+        type: "checkbox",
+        desc: "Mask All Inputs",
+        default: true,
+        disabled: false,
+      },
+    ],
+  },
+  {
+    type: "html",
+    html: "<div>Session replay to track your users' interactions and engagment with the target site. Allowing you to review these sessions to troubleshoot errors, incidents, and other performance issues.</div>",
+  },
+  { type: "html", html: "</br>" },
   {
     type: "html",
     html: '<i class="material-icons" style="font-size:15px">key</i><h3>License Input</h3>',
@@ -109,6 +145,10 @@ chrome.options.addTab("General", [
         singleline: true,
         default: "https://example.com/*",
         disabled: false,
+      },
+      {
+        type: "html",
+        html: '<i class="material-icons" style="font-size:15px;color:#878A8D;">description</i>Note: the <i>target_site</i> must contain a trailing slash and wildcard ("/*").</div>',
       },
       {
         name: "accountID",
@@ -166,7 +206,7 @@ chrome.options.addTab("General", [
         disabled: false,
       },
     ],
-    desc: "New Relic `loader_config` (this is an object type)",
+    desc: "`NREUM.loader_config`:",
     hidden: false,
   },
 ]);

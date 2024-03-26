@@ -10,6 +10,10 @@ img {
     -webkit-border-start-color: #1CE783;
 }
 
+.chrome-bootstrap .content div>.suboptions {
+padding-bottom: 1px;
+}
+
 .title-image {
     max-width: 50% !important;
     height: auto;
