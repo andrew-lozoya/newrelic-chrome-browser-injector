@@ -102,7 +102,6 @@ chrome.runtime.sendMessage({ enabled: 1 }, (response) => {
         if (general !== "off") {
           for (i = 0; i < target_sites.length; i++) {
             var re = new RegExp(target_sites[i].toString());
-            console.log(re);
             if (re.test(window.location)) {
               match = true;
               break; // Break the loop once a match is found
