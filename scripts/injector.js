@@ -14,13 +14,6 @@ console.log(loader_config);
   let nrLoaderInit = document.createElement("script");
   let base_domain = stripToBaseDomain(target_site);
 
-
-  
-
-  console.log(dt);
-  console.log(privacy);
-  console.log(session_replay.enabled);
-
   nrLoaderInit.setAttribute("type", "text/javascript");
   nrLoaderInit.innerHTML = `window.NREUM||(NREUM={});NREUM.init={session_replay:{enabled:${session_replay.enabled},collect_fonts:!0,inline_images:!0,inline_stylesheet:!0,sampling_rate:${session_replay.sampling_rate},error_sampling_rate:${session_replay.error_sampling_rate},mask_all_inputs:${session_replay.mask_all_inputs}},distributed_tracing:{enabled:${dt},cors_use_newrelic_header:!0,cors_use_tracecontext_headers:!1,allowed_origins:["${base_domain}"]},privacy:{cookies_enabled:${privacy}},ajax:{deny_list:["bam.nr-data.net"]}}`;
 
