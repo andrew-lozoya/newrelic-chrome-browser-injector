@@ -46,31 +46,41 @@ function CSPManager(tab) {
     })
 
     chrome.storage.sync.get(['general_loader_config', 'general_csp'], function(result) {
-        const loader_config = result.general_loader_config
-        csp = result.general_csp
+      const loader_config = result.general_loader_config;
+      csp = result.general_csp;
 
-        // Check for undefined on openOptionsPage()
-        if (typeof loader_config !== 'undefined' || typeof csp !== 'undefined') {
-            const target_site = loader_config.target_site
-            const match = urlmatch(target_site, domainUrl)
+      // Check for undefined on openOptionsPage()
+      if (typeof loader_config !== "undefined" || typeof csp !== "undefined") {
+        const sites = loader_config.targets;
+        const target_sites = sites.split(", ");
 
-            if (match === true && csp === true) {
-                IconStatus = true
-                updateCSPIcon(IconStatus)
-            } else if (match === false && csp === true) {
-                IconStatus = false
-                updateCSPIcon(IconStatus)
-            } else if (match === true && csp === false) {
-                IconStatus = true
-                updateIcon(IconStatus)
-            } else if (match === false && csp === false) {
-                IconStatus = false
-                updateIcon(IconStatus)
-            }
-        } else {
-            IconStatus = false
-            updateIcon(IconStatus)
-        }
+        let matchFound = false;
+
+        target_sites.forEach(function (target_site) {
+          if (matchFound) return; // If match already found, exit loop
+
+          const match = urlmatch(target_site, domainUrl);
+
+          if (match === true && csp === true) {
+            IconStatus = true;
+            updateCSPIcon(IconStatus);
+            matchFound = true; // Set flag to true to indicate match found
+          } else if (match === false && csp === true) {
+            IconStatus = false;
+            updateCSPIcon(IconStatus);
+          } else if (match === true && csp === false) {
+            IconStatus = true;
+            updateIcon(IconStatus);
+            matchFound = true; // Set flag to true to indicate match found
+          } else if (match === false && csp === false) {
+            IconStatus = false;
+            updateIcon(IconStatus);
+          }
+        });
+      } else {
+        IconStatus = false;
+        updateIcon(IconStatus);
+      }
     })
 };
 

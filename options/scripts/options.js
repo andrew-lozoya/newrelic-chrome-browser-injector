@@ -139,16 +139,16 @@ chrome.options.addTab("General", [
     type: "object",
     options: [
       {
-        name: "target_site",
+        name: "targets",
         type: "text",
-        desc: "target_site",
+        desc: "targets",
         singleline: true,
-        default: "https://example.com/*",
+        default: "https://www.example.com/*",
         disabled: false,
       },
       {
         type: "html",
-        html: '<i class="material-icons" style="font-size:15px;color:#878A8D;">description</i>Note: the <i>target_site</i> must contain a trailing slash and wildcard ("/*").</div>',
+        html:  '<i class="material-icons" style="font-size:15px;color:#878A8D;">description</i>Note: The <i>targets</i> list is comma-delimited and must contain only fully qualified domain names (FQDNs) that include a resolving subdomain where applicable (e.g., "www."). Also, ensure there\'s always a trailing slash and wildcard (e.g., "/*") for the path.</div>',
       },
       {
         name: "accountID",

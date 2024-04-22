@@ -55,7 +55,7 @@ chrome.runtime.onInstalled.addListener(() => {
             const highestVersion = versions[0].version;
             const highestTitle = versions[0].title;
 
-            const template = `<a href="${highestTitle}" target="_blank" rel="noopener">${highestTitle}</a>`;
+            const template = `<a href="https://docs.newrelic.com/docs/release-notes/new-relic-browser-release-notes/browser-agent-release-notes/browser-agent-v${highestVersion}/" target="_blank" rel="noopener">${highestTitle}</a>`;
             localStorage.setItem("template", template);
 
             localStorage.setItem("version", highestVersion);

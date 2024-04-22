@@ -8,7 +8,8 @@ function stripToBaseDomain(target_site) {
   }
 }
 
-function instrument() {
+function instrument(target_site) {
+
 console.log(loader_config);
   let nrLoaderInit = document.createElement("script");
   let base_domain = stripToBaseDomain(target_site);
@@ -91,21 +92,24 @@ chrome.runtime.sendMessage({ enabled: 1 }, (response) => {
         privacy = result.general_privacy;
         loader_config = result.general_loader_config;
         session_replay = result.general_session_replay;
-        target_site = [loader_config.target_site];
-        version = [loader_config.version];
+        targets = loader_config.targets;
+        version = loader_config.version;
         optional_code = result.advanced_optional_code;
 
+        var target_sites = targets.split(", ");
         var match = false;
 
         if (general !== "off") {
-          for (i = 0; i < target_site.length; i++) {
-            var re = new RegExp(target_site[i]);
+          for (i = 0; i < target_sites.length; i++) {
+            var re = new RegExp(target_sites[i].toString());
+            console.log(re);
             if (re.test(window.location)) {
               match = true;
+              break; // Break the loop once a match is found
             }
           }
           if (match) {
-            instrument();
+            instrument(target_sites[i].toString());
           }
         } else return;
       }
