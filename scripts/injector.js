@@ -15,7 +15,10 @@ console.log(loader_config);
   let base_domain = stripToBaseDomain(target_site);
 
   nrLoaderInit.setAttribute("type", "text/javascript");
+  nrLoaderInit.innerHTML = `window.NREUM||(NREUM={});NREUM.init={session_replay:{enabled:${session_replay.enabled},block_selector:'',mask_text_selector:'*',sampling_rate:${session_replay.sampling_rate},error_sampling_rate:${session_replay.error_sampling_rate},mask_all_inputs:${session_replay.mask_all_inputs},collect_fonts:true,inline_images:false,inline_stylesheet:true,mask_input_options:{}},distributed_tracing:{enabled:${dt},cors_use_newrelic_header:true,cors_use_tracecontext_headers:true,allowed_origins:["${base_domain}"]},privacy:{cookies_enabled:${privacy}},ajax:{deny_list:["bam.nr-data.net"]}}`;
+  /**
   nrLoaderInit.innerHTML = `window.NREUM||(NREUM={});NREUM.init={session_replay:{enabled:${session_replay.enabled},collect_fonts:!0,inline_images:!0,inline_stylesheet:!0,sampling_rate:${session_replay.sampling_rate},error_sampling_rate:${session_replay.error_sampling_rate},mask_all_inputs:${session_replay.mask_all_inputs}},distributed_tracing:{enabled:${dt},cors_use_newrelic_header:!0,cors_use_tracecontext_headers:!1,allowed_origins:["${base_domain}"]},privacy:{cookies_enabled:${privacy}},ajax:{deny_list:["bam.nr-data.net"]}}`;
+  **/
 
   let nrLoader = document.createElement("script");
 
